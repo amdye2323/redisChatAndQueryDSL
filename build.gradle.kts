@@ -8,7 +8,7 @@ plugins {
     kotlin("plugin.spring") version "1.6.21"
     kotlin("plugin.serialization") version "1.6.21"
     kotlin("plugin.jpa") version "1.6.21" // no-arg constructor 생성자를 자동 생성 해줌
-    kotlin("kapt") version "1.6.21" // kapt annotation processing for kotlin
+    // kotlin("kapt") version "1.6.21" // kapt annotation processing for kotlin
     kotlin("plugin.allopen") version  "1.6.21" // kotlin 의 경우 기본이 final 이라 jpa lazy 로딩이 불가능(프록시 객체 생성 불가능)
     // 하여 allopen 플러그인 사용시 모든 엔딭티 객체에 open 을 붙여줌
 }
@@ -24,22 +24,21 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    implementation("com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.7")
+//    implementation("com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.7")
     runtimeOnly("com.h2database:h2")
 
-    implementation("com.querydsl:querydsl-jpa:5.0.0")
-    kapt("com.querydsl:querydsl-apt:5.0.0:jpa")
-    kapt("org.springframework.boot:spring-boot-configuration-processor")
+//    implementation("com.querydsl:querydsl-jpa:5.0.0")
+//    kapt("com.querydsl:querydsl-apt:5.0.0:jpa")
+//    kapt("org.springframework.boot:spring-boot-configuration-processor")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 
-
-    sourceSets["main"].withConvention(org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet::class){
-        kotlin.srcDir("$buildDir/generated/source/kapt/main")
-    }
+//
+//    sourceSets["main"].withConvention(org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet::class){
+//        kotlin.srcDir("$buildDir/generated/source/kapt/main")
+//    }
 
     // socket io libarary
     implementation("org.springframework.boot:spring-boot-starter-websocket")
